@@ -1,0 +1,17 @@
+<header class="header">
+  <div class="row">
+    <div class="column column-12">
+      <a href="/dashboard"><img src="/assets/images/logo.png" class="header__logo" alt="logo"></a>
+      <nav class="header__nav">
+        <a href="/settings">Settings</a>
+        <a href="/logout">Logout</a>
+      </nav>
+    </div>
+  </div>
+</header>
+{% if errorMessage %}
+<div class="prompt prompt--danger prompt--page">{{ errorMessage }}</div>
+{% endif %}
+{% if successMessage %}
+<div class="prompt prompt--success prompt--page">{{ successMessage }}</div>
+{% endif %}

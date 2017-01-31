@@ -1,0 +1,82 @@
+.title.has-pre-space {
+    margin-top: 3rem;
+}
+
+
+.section {
+    background-color: #16a085;
+}
+
+.logo.is-large {
+    max-height: 3rem;
+}
+
+.has-required:after {
+    content: "*";
+    color: red;
+}
+
+.notification.is-small {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+.notification.is-small .delete {
+    top: 0.75rem;
+}
+
+.control.is-spaced:not(:last-child) {
+    margin-bottom: 1.5rem;
+}
+
+.help.is-medium {
+    font-size: 0.8rem;
+}
+
+.uploader {
+    position: relative;
+    max-width: 15rem;
+    max-height: 15rem;
+}
+
+.uploader .passport-src {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.uploader label {
+    display: block;
+    width: 15rem;
+    height: 15rem;
+    background: #e0e0e0;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 15rem;
+    cursor: pointer;
+}
+
+.uploader.is-pulled-right {
+    margin-left: 2rem;
+}
+
+.uploader .passport-src:focus + label {
+	  outline: 1px dotted #000;
+	  outline: -webkit-focus-ring-color auto 5px;
+}
+
+.uploader .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.control.is-license {
+    font-size: 0.75rem;
+    margin-top: 2rem;
+}

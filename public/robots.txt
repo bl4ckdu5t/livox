@@ -1,0 +1,3 @@
+# Robots Txt
+User-agent: *
+Disallow: /bank-details-and-passwords
