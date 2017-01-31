@@ -1,4 +1,3 @@
 node_modules/
 public/assets/*.hot-update*
 .coveralls.yml
-.env
