@@ -15,7 +15,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/dashboard', (req, res, next) => {
   'use strict';
-  let registrant_promise = new Promise((resolve, reject) => {
+  const registrant_promise = new Promise((resolve, reject) => {
     Register.find((err, registrants) => {
       if(err) return reject(err);
       resolve(registrants);
@@ -40,9 +40,21 @@ router.get('/register-successful', (req, res, next) => {
 
 router.get('/pid/:id', (req, res, next) => {
   'use strict';
-  Object.assign(res.locals, {});
-  res.template = 'home/pid';
-  next();
+  const id = req.params.id;
+  const registrant_promise = new Promise((resolve, reject) => {
+    Register.findById(id, (err, registrant) => {
+      if(err) return reject(err);
+      resolve(registrant);
+    });
+  });
+
+  registrant_promise.then((result) => {
+    Object.assign(res.locals, {
+      registrant: result
+    });
+    res.template = 'home/pid';
+    next();
+  }).catch((reason) => next(reason));
 });
 
 router.post('/register', (req, res, next) => {
