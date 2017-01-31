@@ -1,0 +1,20 @@
+{% extends layout %}
+
+{% block content %}
+<main class="content">
+  <h2>Applied Candidates</h2>
+    {% if registrants.length < 1 %}
+    <div class="u-txtcenter">You have no registrant yet</div>
+    {% endif %}
+
+    <ul class="list list--action">
+      {% for registrant in registrants %}
+      <li class="list--action__item clearfix">
+        <img src="{{ registrant._doc.passport }}" alt="" style="width:200px">
+        <p>{{ registrant._doc.surname }} {{ registrant._doc.firstname }}</p>
+        <p>{{ registrant._doc.school }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+</main>
+{% endblock %}

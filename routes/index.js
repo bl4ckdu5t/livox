@@ -13,11 +13,22 @@ router.get('/', (req, res, next) => {
   next();
 });
 
-router.get('/solutions', (req, res, next) => {
+router.get('/dashboard', (req, res, next) => {
   'use strict';
-  Object.assign(res.locals, {});
-  res.template = 'home/solutions';
-  next();
+  let registrant_promise = new Promise((resolve, reject) => {
+    Register.find((err, registrants) => {
+      if(err) return reject(err);
+      resolve(registrants);
+    });
+  });
+  registrant_promise.then((result) => {
+    Object.assign(res.locals, {
+      registrants: result
+    });
+    res.template = 'home/dashboard';
+    next();
+  })
+  .catch((reason) => next(reason));
 });
 
 router.get('/register-successful', (req, res, next) => {
