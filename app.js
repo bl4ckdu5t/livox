@@ -18,7 +18,7 @@ const mongoose = require('mongoose');
 var app = express();
 
 // Connect DB
-mongoose.connect('mongodb://localhost/nuga');
+mongoose.connect(process.env.MONGODB_URI);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
