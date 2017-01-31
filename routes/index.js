@@ -37,7 +37,13 @@ router.get('/register-successful', (req, res, next) => {
   res.template = 'home/registered';
   next();
 });
-/* End Static Pages */
+
+router.get('/pid/:id', (req, res, next) => {
+  'use strict';
+  Object.assign(res.locals, {});
+  res.template = 'home/pid';
+  next();
+});
 
 router.post('/register', (req, res, next) => {
   let credentials = _.omit(req.body, '_csrf');

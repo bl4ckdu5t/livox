@@ -43,14 +43,14 @@
 					<div class="content">
 						<p>
 							<strong>{{ registrant._doc.surname }} {{ registrant._doc.firstname }}</strong>
-              <small>@johnsmith</small>
+              <small>{{ registrant._doc.dept }}</small>
 							<br>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+              {{ registrant._doc.school }}
 						</p>
 					</div>
 					<nav class="level">
 						<div class="level-left">
-							<a class="level-item">
+              <a class="level-item" href="/pid/{{ registrant._doc._id }}">
 								<span class="icon is-small"><i class="fa fa-print"></i></span>
 								<span>View and Print</span>
 							</a>
