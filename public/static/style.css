@@ -137,5 +137,8 @@ body{
     float: left;
     width: 50%;
   }
-  .button{ display: none; }
+  .title, .button, .nav{ display: none; }
+  .box{
+    margin-top: 1rem;
+  }
 }

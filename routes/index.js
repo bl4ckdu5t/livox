@@ -5,13 +5,25 @@ const _ = require('lodash');
 const passport = require('passport');
 const Register = require('../models/Register');
 
-/* Static Pages */
 router.get('/', (req, res, next) => {
   'use strict';
   Object.assign(res.locals, {});
   res.template = 'home/index';
   next();
 });
+
+router.get('/login', (req, res, next) => {
+  'use strict';
+  res.template = 'home/login';
+  next();
+});
+
+router.post('/login', passport.authenticate('local', {
+    successReturnToOrRedirect: '/dashboard',
+    failureRedirect: '/login',
+    failureFlash: true,
+  })
+);
 
 router.get('/dashboard', (req, res, next) => {
   'use strict';
@@ -33,7 +45,7 @@ router.get('/dashboard', (req, res, next) => {
 
 router.get('/register-successful', (req, res, next) => {
   'use strict';
-  Object.assign(res.locals, {animal: 'dog'});
+  Object.assign(res.locals, {});
   res.template = 'home/registered';
   next();
 });
@@ -62,7 +74,7 @@ router.post('/register', (req, res, next) => {
   let registration = new Register(credentials);
   registration.save().then((reg) => {
     console.log(reg._doc);
-    Object.assign(res.locals, { submitted: reg._doc, animal: 'cat' });
+    Object.assign(res.locals, { submitted: reg._doc });
     res.template = 'home/registered';
     next();
   }).catch((err) => {
