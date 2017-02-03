@@ -1,6 +1,4 @@
 'use strict';
-const request = require('superagent');
-const Base = require('./Base.js');
 const mongoose = require('mongoose');
 const registerSchema = new mongoose.Schema({
   zone: String,

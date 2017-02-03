@@ -1,9 +1,299 @@
 {% extends layout %}
 
 {% block content %}
-<main class="content">
-  <div class="content__box">
-    You were registered successfully
-  </div>
-</main>
+        <nav class="nav has-shadow">
+           <div class="container">
+               <div class="nav-left">
+                   <div class="nav-item">
+                       <a href="#">
+                           <img class="logo is-large" alt="NUGA Logo" src="../static/logo.png"/>
+                       </a>
+                   </div>
+               </div>
+           </div>
+        </nav>
+        <section class="section">
+            <div class="container">
+                <form class="box" action="/register" id="reg" enctype="application/json" method="post">
+                    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                    <h2 class="title is-2">Fill the form below</h2>
+                    <div class="notification is-success is-small">
+                      You were registered successfully
+                        <button class="delete"></button>
+                    </div>
+                    <div class="control is-spaced is-grouped">
+                        <div class="control is-expanded">
+                            <label class="label has-required" for="">Zone</label>
+                            <span class="select">
+                                <select id="zone-list" name="zone">
+                                  <option selected>{{ submitted.zone }}</option>
+                                </select>
+                            </span>
+                        </div>
+                        <div class="control is-expanded">
+                            <label class="label has-required" for="">University</label>
+                            <span class="select">
+                                <select id="school-list" name="school">
+                                  <option selected>{{ submitted.school }}</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+
+                    <h2 class="title is-4">Personal Details</h2>
+                    <div class="uploader is-pulled-right">
+                        <input id="pass" type="file" accept="image/*" class="passport-src" required >
+                        <input name="passport" id="passport" type="hidden"/>
+                        <label for="pass">
+                            <strong>Choose a file</strong>
+                            <span>(less than 50kB)</span>
+                            <div class="image is-1by1">
+                              <img src="{{ submitted.passport }}" width="240" height="240"/>
+                            </div>
+                        </label>
+                        <div class="help is-danger is-medium is-hidden">
+                            The image is too large. Must not be more than 50kB
+                        </div>
+                    </div>
+                    <div class="control is-grouped is-spaced">
+                        <div class="control is-expanded">
+                            <label class="label has-required">Surname</label>
+                            <input class="input" name="surname" type="text" value="{{ submitted.surname }}" required/>
+                        </div>
+                        <div class="control is-expanded">
+                            <label class="label has-required">First Name</label>
+                            <input class="input" name="firstname" type="text" value="{{ submitted.firstname }}" required/>
+                        </div>
+                        <div class="control is-expanded">
+                            <label class="label">Middle Name</label>
+                            <input class="input" name="middlename" type="text" value="{{ submitted.middlename }}"/>
+                        </div>
+                    </div>
+                    <div class="control is-spaced is-grouped">
+                        <div class="control is-expanded">
+                            <label class="label">Gender</label>
+                            <label class="radio">
+                                <input name="gender" type="radio" value="Male" {% if submitted.gender == "Male" %} {{ "checked" }} {% endif %} />
+                                Male
+                            </label>
+                            <label class="radio">
+                                <input name="gender" type="radio" value="Female" {% if submitted.gender != "Male" %} {{ "checked" }} {% endif %}/>
+                                Female
+                            </label>
+
+                        </div>
+                    </div>
+                    <div class="control is-grouped is-spaced">
+                        <div class="control is-expanded">
+                            <label class="label has-required">Email</label>
+                            <input class="input" name="email" type="email" value="{{ submitted.email }}" required/>
+                        </div>
+                        <div class="control is-expanded">
+                            <label class="label">Phone</label>
+                            <input class="input" name="phone" type="tel" value="{{ submitted.phone }}"/>
+                        </div>
+                    </div>
+                    <div class="control is-spaced is-grouped">
+                        <div class="control is-expanded">
+                            <label class="label has-required">Address</label>
+                            <textarea class="textarea" name="address" rows="2" value="{{ submitted.address }}" required>{{ submitted.address }}</textarea>
+                        </div>
+                        <div class="control is-expanded">
+                            <label class="label">Address 2</label>
+                            <textarea class="textarea" name="address2" rows="2">{{ submitted.address2 }}</textarea>
+                        </div>
+                    </div>
+                    <div class="control is-spaced is-grouped">
+                        <div class="control is-expanded">
+                            <label class="label">State</label>
+                            <span class="select">
+                                <select id="state-list" name="state">
+                                    <option selected>{{ submitted.state }}</option>
+                                </select>
+                            </span>
+                        </div>
+                        <div class="control is-expanded">
+                            <label class="label">Local Government Area</label>
+                            <span class="select">
+                                <select id="lga-list" name="lga">
+                                    <option selected>{{ submitted.lga }}</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+                    <h2 class="title is-4 has-pre-space">School Details</h2>
+                    <div class="control is-spaced is-grouped">
+                        <div class="control is-expanded">
+                            <label class="label">Faculty/College</label>
+                            <input class="input" type="text" name="faculty" value="{{ submitted.faculty }}"/>
+                        </div>
+                        <div class="control is-expanded">
+                            <label class="label">Department/School</label>
+                            <input class="input" type="text" name="dept" value="{{ submitted.dept }}"/>
+                        </div>
+                        <div class="control is-expanded">
+                            <label class="label">School Registeration Number</label>
+                            <input class="input" type="text" name="schoolreg" value="{{ submitted.schoolreg }}"/>
+                        </div>
+                        <div class="control is-expanded">
+                            <label class="label has-required">JAMB Registeration Number</label>
+                            <input class="input" name="jambreg" type="text" value="{{ submitted.jambreg }}" required/>
+                        </div>
+                    </div>
+                    <div class="control is-spaced is-grouped">
+                        <div class="control is-expanded">
+                            <label class="label">Degree</label>
+                            <input class="input" name="degree" type="text" value="{{ submitted.degree }}"/>
+                        </div>
+                        <div class="control is-expanded">
+                            <label class="label">Level</label>
+                            <span class="select">
+                                <select name="level">
+                                    {% for number in [100,200,300,400,500,600,700] %}
+                                      <option value="{{ number }}" {% if submitted.level == number %} {{ "checked" }} {% endif %}>{{ number }}</option>
+                                    {% endfor %}
+                                </select>
+                            </span>
+                        </div>
+                        <div class="control is-expanded">
+                            <label class="label">Date of Completion</label>
+                            <input class="input" name="completion" type="date" value="{{ submitted.completion }}"/>
+                        </div>
+                    </div>
+                    <h2 class="title is-4" has-pre-space>Next of Kin Details</h2>
+                    <div class="control is-spaced">
+                        <label class="label">Full Name</label>
+                        <input class="input" name="nok_fullname" type="text" value="{{ submitted.nok_fullname }}"/>
+                    </div>
+                    <div class="control is-spaced">
+                        <label class="label">Address</label>
+                        <textarea name="nok_address" rows="2" class="textarea" value="{{ submitted.nok_address }}">
+                          {{ submitted.nok_address }}
+                        </textarea>
+                    </div>
+                    <div class="control is-spaced is-grouped">
+                        <div class="control is-expanded">
+                            <label class="label">LGA</label>
+                            <input class="input" name="nok_lga" type="text" value="{{ submitted.nok_lga }}"/>
+                        </div>
+                        <div class="control is-expanded">
+                            <label class="label">Email</label>
+                            <input class="input" name="nok_email" type="email" value="{{ submitted.nok_email }}"/>
+                        </div>
+                        <div class="control is-expanded">
+                            <label class="label">Phone</label>
+                            <input class="input" name="nok_phone" type="tel" value="{{ submitted.nok_phone }}"/>
+                        </div>
+                    </div>
+                    <h2 class="title is-4" has-pre-space>Competition</h2>
+                    <label class="label">Sports you are competing in.</label>
+                        <div class="control">
+                            <label class="radio" for="">
+                                <input class="checkbox" name="sports[]" type="checkbox"/>
+                                Athletics
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label class="radio" for="">
+                                <input class="checkbox" name="sports[]" type="checkbox"/>
+                                Badminton
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label class="radio" for="">
+                                <input class="checkbox" name="sports[]" type="checkbox"/>
+                                Basketball
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label class="radio" for="">
+                                <input class="checkbox" name="sports[]" type="checkbox"/>
+                                Cricket
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label class="radio" for="">
+                                <input class="checkbox" name="sports[]" type="checkbox"/>
+                                Chess
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label class="radio" for="">
+                                <input class="checkbox" name="sports[]" type="checkbox"/>
+                                Football
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label class="radio" for="">
+                                <input class="checkbox" name="sports[]" type="checkbox"/>
+                                Handball
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label class="radio" for="">
+                                <input class="checkbox" name="sports[]" type="checkbox"/>
+                                Hockey
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label class="radio" for="">
+                                <input class="checkbox" name="sports[]" type="checkbox"/>
+                                Judo
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label class="radio" for="">
+                                <input class="checkbox" name="sports[]" type="checkbox"/>
+                                Scrabble
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label class="radio" for="">
+                                <input class="checkbox" name="sports[]" type="checkbox"/>
+                                Squash
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label class="radio" for="">
+                                <input class="checkbox" name="sports[]" type="checkbox"/>
+                                Swimming
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label class="radio" for="">
+                                <input class="checkbox" name="sports[]" type="checkbox"/>
+                                Table Tennis
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label class="radio" for="">
+                                <input class="checkbox" name="sports[]" type="checkbox"/>
+                                Taekwando
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label class="radio" for="">
+                                <input class="checkbox" name="sports[]" type="checkbox"/>
+                                Tennis
+                            </label>
+                        </div>
+                        <div class="control">
+                            <label class="radio" for="">
+                                <input class="checkbox" name="sports[]" type="checkbox"/>
+                                Volleyball
+                            </label>
+                        </div>
+                        <div class="control is-license">
+                            <label class="radio has-required" for="">
+                                <input class="checkbox" name="" type="checkbox" required>
+                                I hereby agree that I have read and accepted <a href="http://nugang.org/?page_id=166">
+                                    Accreditation Guidlines for Nigerian University Games(UAM 2016)</a>
+                            </label>
+                        </div>
+                    <div class="control is-clearfix">
+                        <button class="button is-pulled-right is-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </section>
 {% endblock %}

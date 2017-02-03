@@ -57,6 +57,25 @@ if (app.get('env') == 'production'){
 
 app.use(express.static(path.join(__dirname, 'public'), staticAssetOptions));
 
+// passport.use(new LocalStrategy((username, password, done) => {
+//   Auth.authenticate({email: username, password: password}, (err, user) => {
+//     if(err){ console.log(err); } // logs error for debugging purposes
+//     if(user.body.error){
+//       let error = user.body.error;
+//       return done(null, false, { message: error });
+//     }
+//     app.set('authToken', user.body.data.token);
+//     return done(null, user.body.data);
+//   });
+// }));
+//
+// passport.serializeUser((user, done) => done(null, user.id) );
+// passport.deserializeUser((id, done) => {
+//   Business.find(id, (err, user) => {
+//     done(err, Object.assign(user.body.data, { token: app.get('authToken') }));
+//   });
+// });
+
 // Routing
 const rootRouter = require('./routes/index');
 app.use('/', rootRouter);

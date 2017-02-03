@@ -1,7 +1,7 @@
 {
-  "name": "jama",
+  "name": "nuga",
   "version": "1.0.0",
-  "description": "Jama NodeJS App",
+  "description": "nugastatic",
   "main": "app.js",
   "scripts": {
     "test": "mocha specs/{libs,models,helpers}",

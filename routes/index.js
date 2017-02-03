@@ -33,7 +33,7 @@ router.get('/dashboard', (req, res, next) => {
 
 router.get('/register-successful', (req, res, next) => {
   'use strict';
-  Object.assign(res.locals, {});
+  Object.assign(res.locals, {animal: 'dog'});
   res.template = 'home/registered';
   next();
 });
@@ -61,24 +61,19 @@ router.post('/register', (req, res, next) => {
   let credentials = _.omit(req.body, '_csrf');
   let registration = new Register(credentials);
   registration.save().then((reg) => {
-    console.log(reg);
+    console.log(reg._doc);
+    Object.assign(res.locals, { submitted: reg._doc, animal: 'cat' });
+    res.template = 'home/registered';
+    next();
   }).catch((err) => {
     next(err);
   });
-  res.template = 'home/registered';
-  next();
 });
 
 router.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/');
 });
-
-// Routes To be Mounted
-const settings = require('./settings');
-
-// Mounting Routes
-router.use('/settings', ensureLoggedIn(), settings);
 
 router.use((req, res, next) => {
   if(req.user && req.user.token){

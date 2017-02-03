@@ -27,39 +27,44 @@
 </nav>
 <section class="section">
   <main class="container">
+  <div class="is-pulled-right"><button onClick="javascript:print()" class="button is-danger">Print All</button></div>
     <h2 style="color: white" class="title is-2">Applied Candidates</h2>
 		{% if registrants.length < 1 %}
 		<div class="has-text-centered">You have no registrant yet</div>
 		{% endif %}
+    <div class="columns">
 		{% for registrant in registrants %}
-		<div class="box">
-			<article class="media">
-				<div class="media-left">
-					<figure class="image is-64x64">
-						<img src="{{ registrant._doc.passport }}" alt="{{ registrant._doc.firstname }}">
-					</figure>
-				</div>
-				<div class="media-content">
-					<div class="content">
-						<p>
-							<strong>{{ registrant._doc.surname }} {{ registrant._doc.firstname }}</strong>
-              <small>{{ registrant._doc.dept }}</small>
-							<br>
-              {{ registrant._doc.school }}
-						</p>
-					</div>
-					<nav class="level">
-						<div class="level-left">
-              <a class="level-item" href="/pid/{{ registrant._doc._id }}">
-								<span class="icon is-small"><i class="fa fa-print"></i></span>
-								<span>View and Print</span>
-							</a>
-						</div>
-					</nav>
-				</div>
-			</article>
-		</div>
+    <div class="column is-half">
+      <div class="box">
+        <article class="media">
+          <div class="media-left">
+            <figure class="image is-64x64">
+              <img src="{{ registrant._doc.passport }}" alt="{{ registrant._doc.firstname }}">
+            </figure>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong>{{ registrant._doc.surname }} {{ registrant._doc.firstname }}</strong>
+                <small>{{ registrant._doc.dept }}</small>
+                <br>
+                {{ registrant._doc.school }}
+              </p>
+            </div>
+            <nav class="level">
+              <div class="level-left">
+                <a class="level-item" href="/pid/{{ registrant._doc._id }}">
+                  <span class="icon is-small"><i class="fa fa-print"></i></span>
+                  <span>View and Print</span>
+                </a>
+              </div>
+            </nav>
+          </div>
+        </article>
+      </div>
+    </div>
 		{% endfor %}
+    </div>
   </main>
 </section>
 {% endblock %}

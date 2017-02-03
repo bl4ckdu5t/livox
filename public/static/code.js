@@ -11,7 +11,7 @@ function dataToOption(data) {
 }
 
 function selectList(list, node) {
-    node.html(list.map(dataToOption));
+    node.append(list.map(dataToOption));
 }
 
 selectList(Object.keys(states), $('#state-list'));
