@@ -11,11 +11,11 @@ function dataToOption(data) {
 }
 
 function selectList(list, node) {
-    node.append(list.map(dataToOption));
+    node.html(list.map(dataToOption));
 }
 
 selectList(Object.keys(states), $('#state-list'));
-selectList(states['Abia'], $('#lga-list'));
+// selectList(states['Abia'], $('#lga-list'));
 
 
 $('#state-list').change(function () {
@@ -24,7 +24,7 @@ $('#state-list').change(function () {
 
 
 selectList(Object.keys(zones), $('#zone-list'));
-selectList(zones['A'], $('#school-list'));
+// selectList(zones['A'], $('#school-list'));
 
 
 $('#zone-list').change(function () {
