@@ -1,0 +1,65 @@
+{% extends layout %}
+
+{% block content %}
+<nav class="nav">
+  <div class="nav-left">
+    <a class="nav-item" href="/">
+     <img class="logo is-large" alt="NUGA Logo" src="../static/logo.png"/>
+    </a>
+  </div>
+
+  <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+  <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
+  <span class="nav-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </span>
+
+  <!-- This "nav-menu" is hidden on mobile -->
+  <!-- Add the modifier "is-active" to display it on mobile -->
+    <span class="nav-item">
+      <a class="button" href="/" >
+        Logout
+      </a>
+    </span>
+  </div>
+</nav>
+<section class="section">
+  <main class="container">
+    <h2 style="color: white" class="title is-2">Applied Candidates</h2>
+		{% if registrants.length < 1 %}
+		<div class="has-text-centered">You have no registrant yet</div>
+		{% endif %}
+		{% for registrant in registrants %}
+		<div class="box">
+			<article class="media">
+				<div class="media-left">
+					<figure class="image is-64x64">
+						<img src="{{ registrant._doc.passport }}" alt="{{ registrant._doc.firstname }}">
+					</figure>
+				</div>
+				<div class="media-content">
+					<div class="content">
+						<p>
+							<strong>{{ registrant._doc.surname }} {{ registrant._doc.firstname }}</strong>
+              <small>{{ registrant._doc.dept }}</small>
+							<br>
+              {{ registrant._doc.school }}
+						</p>
+					</div>
+					<nav class="level">
+						<div class="level-left">
+              <a class="level-item" href="/delete/{{ registrant._doc._id }}">
+								<span class="icon is-small"><i class="fa fa-close"></i></span>
+								<span>Delete</span>
+							</a>
+						</div>
+					</nav>
+				</div>
+			</article>
+		</div>
+		{% endfor %}
+  </main>
+</section>
+{% endblock %}

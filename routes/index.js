@@ -25,6 +25,12 @@ router.post('/login', passport.authenticate('local', {
   })
 );
 
+router.get('/delete/:id', (req, res, next) => {
+  Register.findByIdAndRemove({_id: req.params.id}, (registrant) => {
+    res.redirect('/dashboard?view=admin');
+  });
+});
+
 router.get('/dashboard', (req, res, next) => {
   'use strict';
   const registrant_promise = new Promise((resolve, reject) => {
@@ -33,11 +39,12 @@ router.get('/dashboard', (req, res, next) => {
       resolve(registrants);
     });
   });
+  console.log();
   registrant_promise.then((result) => {
     Object.assign(res.locals, {
       registrants: result
     });
-    res.template = 'home/dashboard';
+    res.template = req.param('view') ? 'home/control' : 'home/dashboard';
     next();
   })
   .catch((reason) => next(reason));
