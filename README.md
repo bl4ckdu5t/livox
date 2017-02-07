@@ -49,8 +49,6 @@ app/
   app.js
   package.json
   README.md
-  webpack.config.js
-  webpack.node.config.js
 ```
 Static assets are kept in the assets directory then compiled and kept in `public/assets`, webpack.config.js
 handles bundling of static assets, webpack.node.config.js is used to load hot loader on server
@@ -63,9 +61,6 @@ Environment variables are stored in a .env file at the root of the project. You'
 `touch .env`. Some important env vars used in the application are listed in the example below:
 ```
 NODE_ENV=development
-JAMA_API_KEY=<REDACTED>
-JAMA_SECRET=<REDACTED>
-JAMA_API_URL=<REDACTED>
 ```
 
 ### Testing
