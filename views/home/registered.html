@@ -16,7 +16,11 @@
             <div class="container">
                 <form class="box" action="/register" id="reg" enctype="application/json" method="post">
                     <input type="hidden" name="_csrf" value="{{ csrfToken }}">
-                    <h2 class="title is-2">Fill the form below</h2>
+                    <div class="is-pulled-right">
+                      <button type="button" class="button" onclick="javascript:print()">Print</button>
+                      <button type="button" class="button is-primary" onclick="javascript:print()">Download</button>
+                    </div>
+                    <h2 class="title is-2" style="visibility: hidden">Fill the form below</h2>
                     <div class="notification is-success is-small">
                       You were registered successfully
                         <button class="delete"></button>

@@ -138,6 +138,10 @@ body{
     width: 50%;
   }
   .title, .button, .nav{ display: none; }
+  input,select, .input, textarea, .textarea{
+    border: 0 !important;
+    box-shadow: none !important;
+  }
   .box{
     margin-top: 1rem;
   }
