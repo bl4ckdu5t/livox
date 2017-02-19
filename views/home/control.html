@@ -45,7 +45,21 @@
 							<strong>{{ registrant._doc.surname }} {{ registrant._doc.firstname }}</strong>
               <small>{{ registrant._doc.dept }}</small>
 							<br>
-              {{ registrant._doc.school }}
+              <strong>Zone:</strong> {{ registrant._doc.zone }}
+							<br>
+              <strong>School:</strong> {{ registrant._doc.school }}
+              <br>
+              <strong>Jamb Reg:</strong> {{ registrant._doc.jambreg }}
+              <br>
+              <strong>Matric No:</strong> {{ registrant._doc.schoolreg }}
+              <br>
+              <strong>Sports:</strong> {{ registrant._doc.sports }}
+              <br>
+              <strong>Height:</strong> {{ registrant._doc.height }}
+              <br>
+              <strong>Weight:</strong> {{ registrant._doc.weight }}
+              <br>
+              <strong>Age:</strong> {{ registrant._doc.age }}
 						</p>
 					</div>
 					<nav class="level">
@@ -54,6 +68,9 @@
 								<span class="icon is-small"><i class="fa fa-close"></i></span>
 								<span>Delete</span>
 							</a>
+              <a class="level-item" href="/pid/{{ registrant._doc._id }}">
+                View Single card
+              </a>
 						</div>
 					</nav>
 				</div>

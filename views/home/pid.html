@@ -20,10 +20,13 @@
                 <h1 class="subtitle is-6">(Zone {{ registrant._doc.zone }})</h1>
             </div>
         </div>
-        <h2 class="subtitle is-6">Chairman, Accreditation <span class="sign"></span></h2>
+        <div style="position:relative">
+          <img src="../static/signature.png" alt="signature" style="position:absolute;top: -30px;right:0;width:80px">
+          <h2 class="subtitle is-6">Chairman, Accreditation <span class="sign"></span></h2>
+        </div>
         <h2>
             <button class="is-pulled-right button is-primary" onClick="javascript:print()">Print</button>
-            <label class="label" for="">{{ registrant._doc.level }}</label>
+            <label class="label" for="">{{ registrant._doc.jambreg }}</label>
             <label class="label" for="">{{ registrant._doc.sports }}</label>
         </h2>
     </div>
