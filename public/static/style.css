@@ -150,7 +150,8 @@ body{
   .section{ padding: 0!important; }
   .box.is-centered{
     margin-top: 0 !important;
-    height: 46vh !important;
+    height: 50% !important;
+    min-height: 50vh !important;
     background-color: #caffd3 !important;
   }
 }
