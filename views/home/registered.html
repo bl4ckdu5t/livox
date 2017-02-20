@@ -1,6 +1,17 @@
-{% extends layout %}
-
-{% block content %}
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+  <title>Registeration Form </title>
+  <link href="/static/bulma/css/bulma.css" rel="stylesheet"/>
+  <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+  <link href="/static/style.css" rel="stylesheet"/>
+  <link href="/static/pid.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/modernizr/2.8.3/modernizr.min.js"></script>
+</head>
+<body>
         <nav class="nav has-shadow">
            <div class="container">
                <div class="nav-left">
@@ -90,23 +101,7 @@
                           <label class="label">Age</label>
                           <span class="select">
                           <select name="age">
-                            <option>16</option>
-                            <option>17</option>
-                            <option>18</option>
-                            <option>19</option>
-                            <option>20</option>
-                            <option>21</option>
-                            <option>22</option>
-                            <option>23</option>
-                            <option>24</option>
-                            <option>25</option>
-                            <option>26</option>
-                            <option>27</option>
-                            <option>28</option>
-                            <option>28</option>
-                            <option>30</option>
-                            <option>31</option>
-                            <option>32</option>
+                            <option>{{ submitted.age }}</option>
                           </select>
                           </span>
                         </div>
@@ -332,4 +327,5 @@
                 </form>
             </div>
         </section>
-{% endblock %}
+</body>
+</html>
