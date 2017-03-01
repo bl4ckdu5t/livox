@@ -48,7 +48,7 @@ $('.passport-src').change(function () {
                 $('.image')
                     .removeClass('is-hidden')
                     .find('img')
-                    .attr('src', reader.result);
+                    .attr('src', encodeURI(reader.result));
                 $('#passport').val(reader.result);
                 $('.uploader .help').addClass('is-hidden');
             };

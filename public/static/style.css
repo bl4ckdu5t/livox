@@ -139,7 +139,8 @@ body{
     float: left;
     width: 50%;
   }
-  .title, .button, .nav{ display: none; }
+  .title, .button, .nav, #nok{ display: none; }
+  #competition .control{ display: inline-block; }
   input,select, .input, textarea, .textarea{
     border: 0 !important;
     box-shadow: none !important;

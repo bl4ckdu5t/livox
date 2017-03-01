@@ -196,30 +196,33 @@
                             <input class="input" name="completion" type="date"/>
                         </div>
                     </div>
-                    <h2 class="title is-4" has-pre-space>Next of Kin Details</h2>
-                    <div class="control is-spaced">
-                        <label class="label">Full Name</label>
-                        <input class="input" name="nok_fullname" type="text"/>
+                    <div id="nok">
+                      <h2 class="title is-4" has-pre-space>Next of Kin Details</h2>
+                      <div class="control is-spaced">
+                          <label class="label">Full Name</label>
+                          <input class="input" name="nok_fullname" type="text"/>
+                      </div>
+                      <div class="control is-spaced">
+                          <label class="label">Address</label>
+                          <textarea name="nok_address" rows="2" class="textarea">
+                          </textarea>
+                      </div>
+                      <div class="control is-spaced is-grouped">
+                          <div class="control is-expanded">
+                              <label class="label">LGA</label>
+                              <input class="input" name="nok_lga" type="text"/>
+                          </div>
+                          <div class="control is-expanded">
+                              <label class="label">Email</label>
+                              <input class="input" name="nok_email" type="email" value=""/>
+                          </div>
+                          <div class="control is-expanded">
+                              <label class="label">Phone</label>
+                              <input class="input" name="nok_phone" type="tel"/>
+                          </div>
+                      </div>
                     </div>
-                    <div class="control is-spaced">
-                        <label class="label">Address</label>
-                        <textarea name="nok_address" rows="2" class="textarea">
-                        </textarea>
-                    </div>
-                    <div class="control is-spaced is-grouped">
-                        <div class="control is-expanded">
-                            <label class="label">LGA</label>
-                            <input class="input" name="nok_lga" type="text"/>
-                        </div>
-                        <div class="control is-expanded">
-                            <label class="label">Email</label>
-                            <input class="input" name="nok_email" type="email" value=""/>
-                        </div>
-                        <div class="control is-expanded">
-                            <label class="label">Phone</label>
-                            <input class="input" name="nok_phone" type="tel"/>
-                        </div>
-                    </div>
+                    <div id="competition">
                     <h2 class="title is-4" has-pre-space>Competition</h2>
                     <label class="label">Sports you are competing in.</label>
                         <div class="control">
@@ -317,6 +320,7 @@
                                 <input class="checkbox" name="sports" type="checkbox" value="Volleyball"/>
                                 Volleyball
                             </label>
+                        </div>
                         </div>
                         <div class="control is-license">
                             <label class="radio has-required" for="">
